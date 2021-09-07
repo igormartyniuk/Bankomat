@@ -30,30 +30,36 @@ public class Main {
 
         while (work ==0){
             System.out.println("Виберіть операцію: ");
-            System.out.println("1 - оплатити");
-            System.out.println("2 - поповнити");
-            System.out.println("3 - Перерахунок");
-            System.out.println("4 - Вийти");
+            System.out.println("1 - Перевірка балансу");
+            System.out.println("2 - оплатити");
+            System.out.println("3 - поповнити");
+            System.out.println("4 - Перерахунок");
+            System.out.println("5 - Вийти");
             int choice = scanner.nextInt();
 
             switch (choice){
                 case 1:{
+                    System.out.println (igorAccount.getPerson ().getFirsName ()+" "+igorAccount.getPerson ().getSecondName ()+". Поточний стан рахунку: "+igorAccount.getBill ().getAmount ()+ " грн.");
+                    System.out.println ("_____________");
+                    break;
+                }
+                case 2:{
                     System.out.println("Введіть суму оплати");
                     paymentService.pay(igorAccount,scanner.nextInt ());
                     break;
                 }
-                case 2:{
+                case 3:{
 
                     System.out.println("Введіть суму поповнення");
                     depositService.deposit(igorAccount,scanner.nextInt ());
                     break;
                 }
-                case 3:{
+                case 4:{
                     System.out.println("Введіть суму");
                     transferService.transfer (igorAccount,svitlanaAccount,scanner.nextInt ());
                     break;
                 }
-                case 4:work = 1;
+                case 5:work = 1;
                 break;
             }
         }
