@@ -1,5 +1,6 @@
 import Service.DepositService;
 import Service.PaymentService;
+import Service.TransferService;
 import com.bank.lesson.entity.Account;
 import com.bank.lesson.entity.Bill;
 import com.bank.lesson.entity.Person;
@@ -7,6 +8,7 @@ import com.bank.lesson.entity.Person;
 import java.util.Scanner;
 
 public class Main {
+
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -22,6 +24,7 @@ public class Main {
 
         PaymentService paymentService = new PaymentService();
         DepositService depositService = new DepositService();
+        TransferService transferService = new TransferService ();
 
         int work = 0;
 
@@ -29,22 +32,28 @@ public class Main {
             System.out.println("Виберіть операцію: ");
             System.out.println("1 - оплатити");
             System.out.println("2 - поповнити");
-            System.out.println("3 - Вийти");
+            System.out.println("3 - Перерахунок");
+            System.out.println("4 - Вийти");
             int choice = scanner.nextInt();
-            int newAmoint = scanner.nextInt();
 
             switch (choice){
                 case 1:{
                     System.out.println("Введіть суму оплати");
-                    paymentService.pay(igorAccount,newAmoint);
+                    paymentService.pay(igorAccount,scanner.nextInt ());
                     break;
                 }
                 case 2:{
+
                     System.out.println("Введіть суму поповнення");
-                    depositService.deposit(igorAccount,newAmoint);
+                    depositService.deposit(igorAccount,scanner.nextInt ());
                     break;
                 }
-                case 3:work = 1;
+                case 3:{
+                    System.out.println("Введіть суму");
+                    transferService.transfer (igorAccount,svitlanaAccount,scanner.nextInt ());
+                    break;
+                }
+                case 4:work = 1;
                 break;
             }
         }
