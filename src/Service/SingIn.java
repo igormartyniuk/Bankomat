@@ -6,11 +6,14 @@ public class SingIn {
 
     private Account account;
 
-    public void singIn (Account account, int number){
+    public boolean login (Account account, int number){
         if(account.getPerson().getCode() == number){
             System.out.println("Вхід в систему");
+            return true;
         }else{
             System.out.println("Пробуйте ще");
+            return false;
         }
+
     }
 }

@@ -1,12 +1,16 @@
 package com.bank.lesson.entity;
 
-import com.bank.lesson.entity.Bill;
-
 public class Person {
 
     private String firsName;
     private String SecondName;
-    private String phoneNumber;
+    private int code;
+
+    public Person(String firsName, String secondName, int code) {
+        this.firsName = firsName;
+        SecondName = secondName;
+        this.code = code;
+    }
 
     public String getFirsName() {
         return firsName;
@@ -24,34 +28,11 @@ public class Person {
         SecondName = secondName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public int getCode() {
+        return code;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Person(String firsName, String secondName, String phoneNumber) {
-        this.firsName = firsName;
-        SecondName = secondName;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public static class Deposit {
-
-        private Bill bill;
-
-        public Deposit(Bill bill) {
-            this.bill = bill;
-        }
-
-        public Bill getBill() {
-            return bill;
-        }
-
-        public void setBill(Bill bill) {
-            this.bill = bill;
-        }
+    public void setCode(int code) {
+        this.code = code;
     }
 }
