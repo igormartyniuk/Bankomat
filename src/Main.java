@@ -27,11 +27,17 @@ public class Main {
         Bill olegBill = new Bill(7000);
         Account olegAccount = new Account(olegBill, oleg);
 
+        Account [] accounList = new Account[3];
+        accounList [0] = igorAccount;
+        accounList [1] = svitlanaAccount;
+        accounList [2] = olegAccount;
+
         PaymentService paymentService = new PaymentService();
         DepositService depositService = new DepositService();
         TransferService transferService = new TransferService();
         SingIn singIn = new SingIn();
 
+        System.out.println("Привіт");
         int tryLogin = 0;
         for (int i = 0; i<3; i++) {
             System.out.println("Введіть пароль");
@@ -64,11 +70,23 @@ public class Main {
                             break;
                         }
                         case 4: {
-                            System.out.println("Введіть суму");
-                            transferService.transfer(igorAccount, svitlanaAccount, scanner.nextInt());
+                            System.out.println("Введіть імя користувача якому перераховуєте кошти");
+                            String check = scanner.next();
+                            boolean checkname = false;
+                            for (Account account:accounList) {
+                                if (check.equals(account.getPerson().getFirsName())) {
+                                    System.out.println("Введіть суму");
+                                    transferService.transfer(igorAccount, account, scanner.nextInt());
+                                    System.out.println("________________");
+                                    checkname = true;
+                                }
+                            }
                             break;
                         }
                         case 5:
+                            for (Account account:accounList) {
+                                System.out.println(account.getPerson().getFirsName() +" "+account.getBill().getAmount());
+                            }
                             return;
                     }
                 }
